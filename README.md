@@ -1,5 +1,11 @@
 # **Traffic Sign Recognition** 
 
+Git Structure:
+- images : Contains the set of images that were downloaded from the web.
+- img : helper images for the writeup
+- htmls : Different models that were part of experiments, contains multiple HTML.
+
+NOTE : One of the good results that were produced using LeNet architecture but with more nodes can be seen [here](https://github.com/sumitkapoor/carnd_traffic_sign_project2/blob/master/htmls/Traffic_Sign_Classifier_initial_good_model.html).
 
 ## Introduction
 For a self driving car to run on road the algorithms should be able to understand the traffic signs, rules just as a human being. Based on this, actions like stop, reduce speed, increase speed etc can then be defined for the car to operate.

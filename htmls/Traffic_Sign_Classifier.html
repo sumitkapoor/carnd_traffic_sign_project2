@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Traffic_Sign_Classifier</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Traffic_Sign_Classifier</title><script src="https://unpkg.com/jupyter-js-widgets@2.0.*/dist/embed.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -13,8 +11,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1109,7 +1107,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2538,7 +2535,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3029,7 +3025,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8760,6 +8755,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8962,8 +8960,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8986,6 +8990,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9122,6 +9136,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9211,6 +9228,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9255,6 +9275,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9551,6 +9574,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9571,11 +9595,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11246,7 +11265,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11558,6 +11577,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11571,6 +11591,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11631,8 +11654,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11643,9 +11668,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11831,7 +11858,9 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training  34799
 Validation  4410
@@ -11906,7 +11935,9 @@ Test  12630
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Number of training examples = 34799
 Number of testing examples = 12630
@@ -11974,14 +12005,18 @@ Number of classes = 43
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>(0) Speed limit (20km/h)
 </pre>
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -12504,7 +12539,9 @@ i5L6oViXutSlLnWpi5L/F6uVZyGJhTMZAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (1) Speed limit (30km/h)
@@ -12512,7 +12549,9 @@ i5L6oViXutSlLnWpi5L/F6uVZyGJhTMZAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -12944,7 +12983,9 @@ Hve4xz3ucQ+N+6F4j3vc4x73uIfG/VC8xz3ucY973EPj/wIqvO/EoYTscwAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (2) Speed limit (50km/h)
@@ -12952,7 +12993,9 @@ Hve4xz3ucQ+N+6F4j3vc4x73uIfG/VC8xz3ucY973EPj/wIqvO/EoYTscwAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -13436,7 +13479,9 @@ RK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (3) Speed limit (60km/h)
@@ -13444,7 +13489,9 @@ RK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -13819,7 +13866,9 @@ gl8UPTw8PDw8FPyi6OHh4eHhofBfutMlWcZagnIAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (4) Speed limit (70km/h)
@@ -13827,7 +13876,9 @@ gl8UPTw8PDw8FPyi6OHh4eHhofBfutMlWcZagnIAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -14274,7 +14325,9 @@ vine4x73uMc97iHxvwDFnmzmcxXUagAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (5) Speed limit (80km/h)
@@ -14282,7 +14335,9 @@ vine4x73uMc97iHxvwDFnmzmcxXUagAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -14643,7 +14698,9 @@ bGwYtlHc2NjY2NgwbKO4sbGxsbFh2EZxY2NjY2PD8F8nV+sXjzx0/gAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (6) End of speed limit (80km/h)
@@ -14651,7 +14708,9 @@ bGwYtlHc2NjY2NgwbKO4sbGxsbFh2EZxY2NjY2PD8F8nV+sXjzx0/gAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -15015,7 +15074,9 @@ KN8iLAAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (7) Speed limit (100km/h)
@@ -15023,7 +15084,9 @@ KN8iLAAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -15439,7 +15502,9 @@ AAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (8) Speed limit (120km/h)
@@ -15447,7 +15512,9 @@ AAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -15832,7 +15899,9 @@ nHLKKSb/C0mhG4+Yb6OLAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (9) No passing
@@ -15840,7 +15909,9 @@ nHLKKSb/C0mhG4+Yb6OLAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -16404,7 +16475,9 @@ URRF+B+DAJxFSL12vwAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (10) No passing for vehicles over 3.5 metric tons
@@ -16412,7 +16485,9 @@ URRF+B+DAJxFSL12vwAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -16797,7 +16872,9 @@ p5122sloF4o77bTTTjvtZLQLxZ122mmnnXYy2oXiTjvttNNOOxntQnGnnXbaaaedjHahuNNOO+20
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (11) Right-of-way at the next intersection
@@ -16805,7 +16882,9 @@ p5122sloF4o77bTTTjvtZLQLxZ122mmnnXYy2oXiTjvttNNOOxntQnGnnXbaaaedjHahuNNOO+20
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -17199,7 +17278,9 @@ QmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (12) Priority road
@@ -17207,7 +17288,9 @@ QmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -17718,7 +17801,9 @@ FEc2spGNbGQj8za6FEc2spGNbGQj8za6FEc2spGNbGQj8/b/AIZfdOEINbuHAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (13) Yield
@@ -17726,7 +17811,9 @@ FEc2spGNbGQj8za6FEc2spGNbGQj8za6FEc2spGNbGQj8/b/AIZfdOEINbuHAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -18072,7 +18159,9 @@ KUUAaEoRAJpSBICmFAGgKUUAaEoRAJpSBICmFAGgvQDkE2sRmWvUFwAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (14) Stop
@@ -18080,7 +18169,9 @@ KUUAaEoRAJpSBICmFAGgKUUAaEoRAJpSBICmFAGgvQDkE2sRmWvUFwAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -18420,7 +18511,9 @@ CCHE4aZICCGEOL8BkclXW6eDP/QAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (15) No vehicles
@@ -18428,7 +18521,9 @@ CCHE4aZICCGEOL8BkclXW6eDP/QAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -18801,7 +18896,9 @@ AAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (16) Vehicles over 3.5 metric tons prohibited
@@ -18809,7 +18906,9 @@ AAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -19327,7 +19426,9 @@ Vpfiyla2spWtbGVi/y/+Ojme6py7DgAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (17) No entry
@@ -19335,7 +19436,9 @@ Vpfiyla2spWtbGVi/y/+Ojme6py7DgAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -19786,7 +19889,9 @@ ZgYZefAAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (18) General caution
@@ -19794,7 +19899,9 @@ ZgYZefAAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -20289,7 +20396,9 @@ YII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (19) Dangerous curve to the left
@@ -20297,7 +20406,9 @@ YII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -20539,7 +20650,9 @@ FB944IEHHnjA4P8CmY5dCRg7S7gAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (20) Dangerous curve to the right
@@ -20547,7 +20660,9 @@ FB944IEHHnjA4P8CmY5dCRg7S7gAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -20827,7 +20942,9 @@ AAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (21) Double curve
@@ -20835,7 +20952,9 @@ AAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -21278,7 +21397,9 @@ AABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (22) Bumpy road
@@ -21286,7 +21407,9 @@ AABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -21690,7 +21813,9 @@ AElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (23) Slippery road
@@ -21698,7 +21823,9 @@ AElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -21964,7 +22091,9 @@ O+ywww4Ku1LcYYcddthhB4X/C1ZdMI/oHJWLAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (24) Road narrows on the right
@@ -21972,7 +22101,9 @@ O+ywww4Ku1LcYYcddthhB4X/C1ZdMI/oHJWLAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -22429,7 +22560,9 @@ bnOLNt8U5za3uc1tbnOLNt8U5za3uc1tbnOL9n8Bin60DrZu894AAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (25) Road work
@@ -22437,7 +22570,9 @@ bnOLNt8U5za3uc1tbnOLNt8U5za3uc1tbnOL9n8Bin60DrZu894AAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -22894,7 +23029,9 @@ kNhvivvYxz72sY99SPwfdaPC5oFmj/gAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (26) Traffic signals
@@ -22902,7 +23039,9 @@ kNhvivvYxz72sY99SPwfdaPC5oFmj/gAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -23368,7 +23507,9 @@ jna0ox1N7HgpHu1oRzva0Y4mdrwUj3a0ox3taEcTO16KRzva0Y52tKOJHS/Fox3taEc72tHEjpfi
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (27) Pedestrians
@@ -23376,7 +23517,9 @@ jna0ox1N7HgpHu1oRzva0Y4mdrwUj3a0ox3taEcTO16KRzva0Y52tKOJHS/Fox3taEc72tHEjpfi
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -23934,7 +24077,9 @@ AAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (28) Children crossing
@@ -23942,7 +24087,9 @@ AAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -24295,7 +24442,9 @@ bNiwYUPCvhRt2LBhw4YNCftStGHDhg0bNiTsS9GGDRs2bNiQsC9FGzZs2LBhQ8K+FG3YsGHDhg2J
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (29) Bicycles crossing
@@ -24303,7 +24452,9 @@ bNiwYUPCvhRt2LBhw4YNCftStGHDhg0bNiTsS9GGDRs2bNiQsC9FGzZs2LBhQ8K+FG3YsGHDhg2J
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -24766,7 +24917,9 @@ TkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (30) Beware of ice/snow
@@ -24774,7 +24927,9 @@ TkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -25160,7 +25315,9 @@ loWtQ3HZsmXLli0L+z9fvRxh8CWzaQAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (31) Wild animals crossing
@@ -25168,7 +25325,9 @@ loWtQ3HZsmXLli0L+z9fvRxh8CWzaQAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -25487,7 +25646,9 @@ XELxggsuuOCCCxz+Pzcw1FSdLIOQAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (32) End of all speed and passing limits
@@ -25495,7 +25656,9 @@ XELxggsuuOCCCxz+Pzcw1FSdLIOQAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -25911,7 +26074,9 @@ sZdeeumll15U+kOxl1566aWXXlT+G09yyKSEioPgAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (33) Turn right ahead
@@ -25919,7 +26084,9 @@ sZdeeumll15U+kOxl1566aWXXlT+G09yyKSEioPgAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -26279,7 +26446,9 @@ cYbKkVz659MAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (34) Turn left ahead
@@ -26287,7 +26456,9 @@ cYbKkVz659MAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -26765,7 +26936,9 @@ gx3sYGKHQ/FgBzvYwQ52MLH/Dw1nLKyjPRpaAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (35) Ahead only
@@ -26773,7 +26946,9 @@ gx3sYGKHQ/FgBzvYwQ52MLH/Dw1nLKyjPRpaAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -27229,7 +27404,9 @@ AAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (36) Go straight or right
@@ -27237,7 +27414,9 @@ AAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -27660,7 +27839,9 @@ gg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (37) Go straight or left
@@ -27668,7 +27849,9 @@ gg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -28045,7 +28228,9 @@ tLBzUzzttNNOO+20sHNTPO2000477bSwvwFQtgf2N21SvQAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (38) Keep right
@@ -28053,7 +28238,9 @@ tLBzUzzttNNOO+20sHNTPO2000477bSwvwFQtgf2N21SvQAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -28322,7 +28509,9 @@ AAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (39) Keep left
@@ -28330,7 +28519,9 @@ AAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -28765,7 +28956,9 @@ s+NSPOywww477LBmx6V42GGHHXbYYc3+NwRguGT/A1iiAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (40) Roundabout mandatory
@@ -28773,7 +28966,9 @@ s+NSPOywww477LBmx6V42GGHHXbYYc3+NwRguGT/A1iiAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -29347,7 +29542,9 @@ KIlqMQ8AAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (41) End of no passing
@@ -29355,7 +29552,9 @@ KIlqMQ8AAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -29724,7 +29923,9 @@ aNCgQYMGCQ2hOGjQoEGDBgn9BzPGG0/OmLWOAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (42) End of no passing by vehicles over 3.5 metric tons
@@ -29732,7 +29933,9 @@ aNCgQYMGCQ2hOGjQoEGDBgn9BzPGG0/OmLWOAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -30174,7 +30377,9 @@ HnvsIbFvinvssccee+whsW+Ke+yxxx577CGxb4p77LHHHnvsIbFvinvssccee+whsW+Ke+yxxx57
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 </pre>
@@ -30250,7 +30455,7 @@ HnvsIbFvinvssccee+whsW+Ke+yxxx577CGxb4p77LHHHnvsIbFvinvssccee+whsW+Ke+yxxx57
     <span class="n">flat_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
     <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">flat_x</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">flat_x</span><span class="p">)</span> <span class="o">/</span> <span class="n">flat_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">U</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
-    <span class="n">epsilon</span> <span class="o">=</span> <span class="mi">10</span><span class="n">e</span><span class="o">-</span><span class="mi">7</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">10e-7</span>
     <span class="n">ZCAMatrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">S</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">))),</span> <span class="n">U</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="c1">#ZCA Whitening matrix</span>
     <span class="k">return</span> <span class="n">ZCAMatrix</span>
 
@@ -30423,7 +30628,9 @@ HnvsIbFvinvssccee+whsW+Ke+yxxx577CGxb4p77LHHHnvsIbFvinvssccee+whsW+Ke+yxxx57
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>Using TensorFlow backend.
 </pre>
@@ -30555,7 +30762,9 @@ HnvsIbFvinvssccee+whsW+Ke+yxxx577CGxb4p77LHHHnvsIbFvinvssccee+whsW+Ke+yxxx57
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Generated images : 16125
 Sample of images that were generated for each class
@@ -30565,7 +30774,9 @@ Sample of images that were generated for each class
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -30972,7 +31183,9 @@ UKBAgQIWxaJYoECBAgUKWBSLYoECBQoUKGBRLIoFChQoUKCARbEoFihQoECBAhbFoligQIECBQpY
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (1) Speed limit (30km/h)
@@ -30980,7 +31193,9 @@ UKBAgQIWxaJYoECBAgUKWBSLYoECBQoUKGBRLIoFChQoUKCARbEoFihQoECBAhbFoligQIECBQpY
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -31386,7 +31601,9 @@ ChUqVKhQQVBtihUqVKhQoYLg/wDRajaOarbcNQAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (2) Speed limit (50km/h)
@@ -31394,7 +31611,9 @@ ChUqVKhQQVBtihUqVKhQoYLg/wDRajaOarbcNQAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -31800,7 +32019,9 @@ YNEdih06dOjQoYNFdyh26NChQ4cOFt2h2KFDhw4dOlh0h2KHDh06dOhg0R2KHTp06NChg0V3KHbo
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (3) Speed limit (60km/h)
@@ -31808,7 +32029,9 @@ YNEdih06dOjQoYNFdyh26NChQ4cOFt2h2KFDhw4dOlh0h2KHDh06dOhg0R2KHTp06NChg0V3KHbo
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -32119,7 +32342,9 @@ wVu1TAAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (4) Speed limit (70km/h)
@@ -32127,7 +32352,9 @@ wVu1TAAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -32530,7 +32757,9 @@ GoLaKNaoUaNGjRqC2ijWqFGjRo0agv8LcCPrOfQefPcAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (5) Speed limit (80km/h)
@@ -32538,7 +32767,9 @@ GoLaKNaoUaNGjRqC2ijWqFGjRo0agv8LcCPrOfQefPcAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -32905,7 +33136,9 @@ A+EshOQIZd7oAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (6) End of speed limit (80km/h)
@@ -32913,7 +33146,9 @@ A+EshOQIZd7oAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -33152,7 +33387,9 @@ sWOHYVeKO3bs2LFjh2FXijt27NixY4fh/wPp6ijoWICG2QAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (7) Speed limit (100km/h)
@@ -33160,7 +33397,9 @@ sWOHYVeKO3bs2LFjh2FXijt27NixY4fh/wPp6ijoWICG2QAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -33478,7 +33717,9 @@ hBCHRpEQQghxaBQJIYQQh0aREEIIcWgUCSGEEIdGkRBCCHG+ATEk+2jygDFjAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (8) Speed limit (120km/h)
@@ -33486,7 +33727,9 @@ hBCHRpEQQghxaBQJIYQQh0aREEIIcWgUCSGEEIdGkRBCCHG+ATEk+2jygDFjAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -33862,7 +34105,9 @@ FYp6KFZUVFRUVCj+F4/qB6Hpw2N2AAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (9) No passing
@@ -33870,7 +34115,9 @@ FYp6KFZUVFRUVCj+F4/qB6Hpw2N2AAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -34219,7 +34466,9 @@ ioVCoVAoRMqkWCgUCoVCpEyKhUKhUChE/gvB4s1gG0mjmQAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (10) No passing for vehicles over 3.5 metric tons
@@ -34227,7 +34476,9 @@ ioVCoVAoRMqkWCgUCoVCpEyKhUKhUChE/gvB4s1gG0mjmQAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -34499,7 +34750,9 @@ BgwYEDEIxQEDBgwYMCDi/we+ysOtSy2l/QAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (11) Right-of-way at the next intersection
@@ -34507,7 +34760,9 @@ BgwYEDEIxQEDBgwYMCDi/we+ysOtSy2l/QAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -34842,7 +35097,9 @@ SUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (12) Priority road
@@ -34850,7 +35107,9 @@ SUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -35178,7 +35437,9 @@ igBQ7uQwIeWuUyhGAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (13) Yield
@@ -35186,7 +35447,9 @@ igBQ7uQwIeWuUyhGAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -35535,7 +35798,9 @@ iw+KHo/H4/FYfFD0eDwej8fig6LH4/F4PJbfAIe1KMwcEA+JAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (14) Stop
@@ -35543,7 +35808,9 @@ iw+KHo/H4/FYfFD0eDwej8fig6LH4/F4PJbfAIe1KMwcEA+JAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -35939,7 +36206,9 @@ jK6n2KFDhw4dOjh0QbFDhw4dOnRw6IJihw4dOnTo4NAFxQ4dOnTo0MGhC4odOnTo0KGDQxcUO3To
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (15) No vehicles
@@ -35947,7 +36216,9 @@ jK6n2KFDhw4dOjh0QbFDhw4dOnRw6IJihw4dOnTo4NAFxQ4dOnTo0MGhC4odOnTo0KGDQxcUO3To
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -36296,7 +36567,9 @@ YII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (16) Vehicles over 3.5 metric tons prohibited
@@ -36304,7 +36577,9 @@ YII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -36558,7 +36833,9 @@ DnL6/2v1ILRE0aOZAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (17) No entry
@@ -36566,7 +36843,9 @@ DnL6/2v1ILRE0aOZAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -36941,7 +37220,9 @@ rkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (18) General caution
@@ -36949,7 +37230,9 @@ rkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -37372,7 +37655,9 @@ Ro0aNT4C9aFYo0aNGjVqGNSHYo0aNWrUqGFQH4o1atSoUaOGQX0o1qhRo0aNGgb1oVijRo0aNWoY
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (19) Dangerous curve to the left
@@ -37380,7 +37665,9 @@ Ro0aNT4C9aFYo0aNGjVqGNSHYo0aNWrUqGFQH4o1atSoUaOGQX0o1qhRo0aNGgb1oVijRo0aNWoY
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -37762,7 +38049,9 @@ ZsyYIZg3xRkzZsyYMUMwb4ozZsyYMWOG4P8Az2rMHxDrtZ0AAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (20) Dangerous curve to the right
@@ -37770,7 +38059,9 @@ ZsyYIZg3xRkzZsyYMUMwb4ozZsyYMWOG4P8Az2rMHxDrtZ0AAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -38060,7 +38351,9 @@ mmmmmZRmoTjTTDPNNNNMSv8fvJNQTkt8nZAAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (21) Double curve
@@ -38068,7 +38361,9 @@ mmmmmZRmoTjTTDPNNNNMSv8fvJNQTkt8nZAAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -38461,7 +38756,9 @@ KXbo0KFDhw6Czil26NChQ4cOgs4pdujQoUOHDoLOKXbo0KFDhw6Czil26NChQ4cOgv8B8t65pM/9
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (22) Bumpy road
@@ -38469,7 +38766,9 @@ KXbo0KFDhw6Czil26NChQ4cOgs4pdujQoUOHDoLOKXbo0KFDhw6Czil26NChQ4cOgv8B8t65pM/9
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -38882,7 +39181,9 @@ BgwYIBgOxQEDBgwYMEDwfwE5HSJjkX+cMQAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (23) Slippery road
@@ -38890,7 +39191,9 @@ BgwYIBgOxQEDBgwYMEDwfwE5HSJjkX+cMQAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -39264,7 +39567,9 @@ r5riFxGtAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (24) Road narrows on the right
@@ -39272,7 +39577,9 @@ r5riFxGtAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -39694,7 +40001,9 @@ R48ePXoI+k2xR48ePXr0EPSbYo8ePXr06CHoN8UePXr06NFD0G+KPXr06NGjh6DfFHv06NGjRw/B
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (25) Road work
@@ -39702,7 +40011,9 @@ R48ePXoI+k2xR48ePXr0EPSbYo8ePXr06CHoN8UePXr06NFD0G+KPXr06NGjh6DfFHv06NGjRw/B
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -40064,7 +40375,9 @@ f+8CosgwlUgGAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (26) Traffic signals
@@ -40072,7 +40385,9 @@ f+8CosgwlUgGAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -40345,7 +40660,9 @@ jBjhMQrFESNGjBgxwuP/BywvMF855Aw/AAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (27) Pedestrians
@@ -40353,7 +40670,9 @@ jBjhMQrFESNGjBgxwuP/BywvMF855Aw/AAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -40725,7 +41044,9 @@ KyoqKioqFP8LSGGrM1Yvf9sAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (28) Children crossing
@@ -40733,7 +41054,9 @@ KyoqKioqFP8LSGGrM1Yvf9sAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -41088,7 +41411,9 @@ iBGCcVEcMWLEiBEjBOOiOGLEiBEjRgj+F16gWNsEukh+AAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (29) Bicycles crossing
@@ -41096,7 +41421,9 @@ iBGCcVEcMWLEiBEjBOOiOGLEiBEjRgj+F16gWNsEukh+AAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -41483,7 +41810,9 @@ SBg2xQEDBgwYMCDh/wHM9YlpdT0h5QAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (30) Beware of ice/snow
@@ -41491,7 +41820,9 @@ SBg2xQEDBgwYMCDh/wHM9YlpdT0h5QAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -41852,7 +42183,9 @@ RUVFheK/z+zTF4YihzAAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (31) Wild animals crossing
@@ -41860,7 +42193,9 @@ RUVFheK/z+zTF4YihzAAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -42175,7 +42510,9 @@ BOmVYi+99NJLL70E6ZViL7300ksvvQT5/wHNqNyEFNiv/QAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (32) End of all speed and passing limits
@@ -42183,7 +42520,9 @@ BOmVYi+99NJLL70E6ZViL7300ksvvQT5/wHNqNyEFNiv/QAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -42537,7 +42876,9 @@ RU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (33) Turn right ahead
@@ -42545,7 +42886,9 @@ RU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -42885,7 +43228,9 @@ EATBIklREARBECySFAVBEATBIklREARBECx/Az2kN0qGhS1GAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (34) Turn left ahead
@@ -42893,7 +43238,9 @@ EATBIklREARBECySFAVBEATBIklREARBECx/Az2kN0qGhS1GAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -43250,7 +43597,9 @@ U1NTU1PjqTfFmpqampoaT70p1tTU1NTUeP4bL5X8LgstNGgAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (35) Ahead only
@@ -43258,7 +43607,9 @@ U1NTU1PjqTfFmpqampoaT70p1tTU1NTUeP4bL5X8LgstNGgAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -43676,7 +44027,9 @@ D8USJUqUKFHC4P8DLH9l+e+qngAAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (36) Go straight or right
@@ -43684,7 +44037,9 @@ D8USJUqUKFHC4P8DLH9l+e+qngAAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -43962,7 +44317,9 @@ YII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (37) Go straight or left
@@ -43970,7 +44327,9 @@ YII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -44397,7 +44756,9 @@ xRQpUqRIkcIgXRRTpEiRIkUKg3RRTJEiRYoUKQz+H8mwH57uEgTsAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (38) Keep right
@@ -44405,7 +44766,9 @@ xRQpUqRIkcIgXRRTpEiRIkUKg3RRTJEiRYoUKQz+H8mwH57uEgTsAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -44775,7 +45138,9 @@ ODg4ODhY/C+tY1oaidyYYwAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (39) Keep left
@@ -44783,7 +45148,9 @@ ODg4ODhY/C+tY1oaidyYYwAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -45199,7 +45566,9 @@ j9oo1qhRo0aNGh7/B2GnL495Go9IAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (40) Roundabout mandatory
@@ -45207,7 +45576,9 @@ j9oo1qhRo0aNGh7/B2GnL495Go9IAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -45620,7 +45991,9 @@ S5QoUaJECYMyKJYoUaJEiRIGZVAsUaJEiRIlDP4/K0NAsEM57EQAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (41) End of no passing
@@ -45628,7 +46001,9 @@ S5QoUaJECYMyKJYoUaJEiRIGZVAsUaJEiRIlDP4/K0NAsEM57EQAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -45974,7 +46349,9 @@ UoxEIpFIxBEnxUgkEolEHP8Pwe0ua9F0WwsAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (42) End of no passing by vehicles over 3.5 metric tons
@@ -45982,7 +46359,9 @@ UoxEIpFIxBEnxUgkEolEHP8Pwe0ua9F0WwsAAAAASUVORK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -46323,7 +46702,9 @@ LU4DJgAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 (50924, 32, 32, 3)
@@ -46375,7 +46756,9 @@ LU4DJgAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -47341,7 +47724,9 @@ fNEMIepglAAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -48308,7 +48693,9 @@ AElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -49365,9 +49752,9 @@ SUVORK5CYII=
     <span class="c1"># input_depth = 32, output_depth = 64</span>
     <span class="c1"># input_height = 15, output_height = 12</span>
     <span class="c1"># input_width = 15, output_width = 12</span>
-    <span class="c1"># weight_h = 12 : (15 - 4 + 1)/ 1 if stride_height = 1</span>
-    <span class="c1"># weight_w = 12 : (15 - 4 + 1)/ 1 if stride_width = 1</span>
-    <span class="n">W_conv_02</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">mu</span><span class="p">,</span> <span class="n">stddev</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">))</span>
+    <span class="c1"># weight_h = 12 : (15 - 3 + 1)/ 1 if stride_height = 1</span>
+    <span class="c1"># weight_w = 12 : (15 - 3 + 1)/ 1 if stride_width = 1</span>
+    <span class="n">W_conv_02</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">mu</span><span class="p">,</span> <span class="n">stddev</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">))</span>
     <span class="n">B_conv_02</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">64</span><span class="p">],</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">mu</span><span class="p">))</span>
     <span class="n">stride_conv_02</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;layer_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">W_conv_02</span>
@@ -49716,7 +50103,9 @@ sets imply underfitting. A high accuracy on the training set but low accuracy on
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training...
 
@@ -49825,7 +50214,9 @@ Model saved
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -50807,7 +51198,9 @@ AAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Test Accuracy = 0.928
 </pre>
@@ -50913,7 +51306,9 @@ AAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -51046,7 +51441,9 @@ gg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -51189,7 +51586,9 @@ mGikI5FIpB8TjXQkEon0Y6KRjkQikX7M/wdKYnnP7dXlZQAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -51327,7 +51726,9 @@ RU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -51463,7 +51864,9 @@ wUXaORxLCBdp53AsIZzAOxxLCCfwDscSwgm8w7GEcALvcCwhnMA7HEsIJ/AOxxLCCbzDsYT4/8+8
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -51596,7 +51999,9 @@ QTQSAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -51753,7 +52158,9 @@ Tw7wxtTj8XhywP8AQDSoLF3EtBYAAAAASUVORK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -51899,7 +52306,9 @@ RU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -52073,7 +52482,9 @@ W7gycG8AAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Accuracy = 100.000
 </pre>
@@ -52177,7 +52588,9 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
  Actual        - Stop
@@ -52185,7 +52598,9 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -52369,7 +52784,9 @@ sCRJknrHECxJkqTeMQRLkiSpdwzBkiRJ6p3/D0rr1586hfnDAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
  Actual        - Speed limit (30km/h)
@@ -52377,7 +52794,9 @@ sCRJknrHECxJkqTeMQRLkiSpdwzBkiRJ6p3/D0rr1586hfnDAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -52578,7 +52997,9 @@ WJIkSYNjCJYkSdLg/P/78Yeq87DOBAAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
  Actual        - Roundabout mandatory
@@ -52586,7 +53007,9 @@ WJIkSYNjCJYkSdLg/P/78Yeq87DOBAAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -52765,7 +53188,9 @@ kiRJUg8GakmSJKkHA7UkSZLUg4FakiRJ6sFALUmSJPXw/wGw+M1I7wUJzwAAAABJRU5ErkJggg==
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
  Actual        - Yield
@@ -52773,7 +53198,9 @@ kiRJUg8GakmSJKkHA7UkSZLUg4FakiRJ6sFALUmSJPXw/wGw+M1I7wUJzwAAAABJRU5ErkJggg==
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -52942,7 +53369,9 @@ u8DFbXtr4AdJNmOY+R31iiQPSbITsCNw3Qznvq2NBUBV3QV8Fngf8P51vyRJvTD8SpLWSlX9APgL
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
  Actual        - No entry
@@ -52950,7 +53379,9 @@ u8DFbXtr4AdJNmOY+R31iiQPSbITsCNw3Qznvq2NBUBV3QV8Fngf8P51vyRJvTD8SpLWSlX9APgL
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -53137,7 +53568,9 @@ RK5CYII=
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
  Actual        - Children crossing
@@ -53145,7 +53578,9 @@ RK5CYII=
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -53345,7 +53780,9 @@ AAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
  Actual        - Keep right
@@ -53353,7 +53790,9 @@ AAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -53527,7 +53966,9 @@ SZIkdWCgliRJkjowUEuSJEkdGKglSZKkDgzUkiRJUgf/H7lu/alNnXQsAAAAAElFTkSuQmCC
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
  Actual        - Road work
@@ -53535,7 +53976,9 @@ SZIkdWCgliRJkjowUEuSJEkdGKglSZKkDgzUkiRJUgf/H7lu/alNnXQsAAAAAElFTkSuQmCC
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -53820,14 +54263,18 @@ AAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Layer 01 visualization : 
 </pre>
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 
 
 <div class="output_png output_subarea ">
@@ -54715,7 +55162,10 @@ AElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Layer 1 convolutional network is able to identify the image clearly, though there can still be some dead filters. This layer is learning the shape of the image : the circle, 30 and a combination of both. The whole image in F-MAP 12 and F-MAP 23 can also be seen.</p>
+<p>Visualizing across different experiments gave me an insight as to what features layer 1 of convolution is learning. I could not understand or visualize layer 2 and 3 of convolution network.</p>
+<p>Based on the output for 8 and 16 depth layer1, It seemed that most of the features was missing and is included some dead feature maps. It did not seem that the layer was learning about colors so though of converting the images to gray. As this did not improve the accuracy I kept RGB.</p>
+<p>On increasing the layer 1 feature depth to 32, a lot more details were learnt as shown in the image above. Once I had made this change and correspondingly changes the subsequent layers by doubling the depth.</p>
+<p>Also reduced the kernel from 5 x 5 to 3 x 3 which improved the accuracy of the model.</p>
 
 </div>
 </div>
@@ -54745,4 +55195,8 @@ AElFTkSuQmCC
     </div>
   </div>
 </body>
+
+ 
+
+
 </html>
