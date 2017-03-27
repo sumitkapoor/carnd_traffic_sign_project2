@@ -1,7 +1,7 @@
-#**Traffic Sign Recognition** 
+# **Traffic Sign Recognition** 
 
 
-##Introduction
+## Introduction
 For a self driving car to run on road the algorithms should be able to understand the traffic signs, rules just as a human being. Based on this, actions like stop, reduce speed, increase speed etc can then be defined for the car to operate.
 
 The document describes various steps and models that were used to identify and classify german traffic signs. For classification machine learning algorithms were used along with basic image processing. 
@@ -10,7 +10,7 @@ The document first describes the goal of the project, the process that was taken
 
 ----
 
-##Project Goals
+## Project Goals
 The goals  of this project are the following:
 * Build and train a neural network to be able to classify the german traffic signs with at-least 0.93 accuracy.
 * Use the model to classify test set and random traffic sign images downloaded from the web.
@@ -18,7 +18,7 @@ The goals  of this project are the following:
 
 ---
 
-##Reflection
+## Reflection
 
 Training data for the project was downloaded from [here](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/5898cd6f_traffic-signs-data/traffic-signs-data.zip).
 This is a zip file that contained the following:
@@ -28,7 +28,7 @@ This is a zip file that contained the following:
  4. CSV of traffic sign name and corresponding identifiers.
 
 
-###UNDERSTANDING THE DATA
+### UNDERSTANDING THE DATA
 The pickle object contained 4 key/ value pair:
  *features* : raw pixels (num_examples, 32 (width), 32 (height), 3 (channels))
  *labels* : sign identifiers corresponding to the features.
@@ -41,7 +41,8 @@ The pickle object contained 4 key/ value pair:
 | Validation set  |     4410          |
 | Test set        |    12630          |
  
- > **The images were of the shape 32 x 32 x 3 and there were 43 classes of german traffic signs.**
+ **The images were of the shape 32 x 32 x 3 and there were 43 classes of german traffic signs.**
+
 | Class ID            |    SignName   |                                        
 | :-------------------- | :-----------|
 | 0 |  Speed limit (20km/h)  |
@@ -98,7 +99,7 @@ The following shows the distribution of features per data set:
 
 In all the distribution above we can see that the data was very skewed and had less features for certain classes. This led to my model not being able to predict most of the traffic signs. I also encountered very less accuracy while working on the traffic sing images that were downloaded  from the web.
 
-###PRE-PROCESS DATA
+### PRE-PROCESS DATA
 The training set was extended by adding images generated post rotation, shifting, flipping and zooming. Here I had explored *keras library* for generating training data, but just to understand the above image processing technique implemented it using PIL and numpy. I was interested in exploring ZCA whitening after reading it as one of the best practices, but it was taking a long time zca to be applied.
 
 Sample of generated images:
@@ -121,7 +122,7 @@ The Training set, validation and test set was then normalized using the followin
 Post this I could see improvement with model accuracy.
 
 
-###NEURAL NETWORK MODEL
+### NEURAL NETWORK MODEL
 The ConvNet architecture is composed of 3 repeated layers and then followed by 3 fully connected layers.  Each convolution layer contains a convolution module, followed by a rectified module. Max pooling module is used between convolution layer 1 and convolution layer 2.  
 
 All convolution layer are of kernel 3 x 3. Layer 1 of convolution produces a depth of 32, the second layer produces the depth of 64 and finally the third layer produces the depth of 128. All max pooling layer are of stride 2 x 2.
@@ -142,7 +143,7 @@ The model got evolved from LeNet architecture and had to be go through an iterat
 - LEARNING RATE : I started with static .001 learning rate and model would take around 100 - 150 epoch to learn. Also as the epoch increased so did the cost at validation set once pass a threshold. Figured out that it's a good idea to decay the learning rate. Eventually settled down to .003 with decay of .99 at each epoch.
 - EPOCHS : I would see that after certain epochs the cost would start increasing which would be due to overfitting of the model. Played with different values like 80, 100 and 150. Finally 100 worked.
 
-###PERFORMANCE
+### PERFORMANCE
 
 | Set             |    Accuracy |
 | :--------       | -----------------:|
@@ -167,7 +168,7 @@ Along the above 8 images were downloaded from the web to test the accuracy of th
  
 *Note : Images are stored in ./images/ . Name of the images is the class ID*
 
-###SOFTMAX PROPABILITIES
+### SOFTMAX PROPABILITIES
 
 Softmax probability of the images is as shown:
 
@@ -218,7 +219,7 @@ Softmax probability of the images is as shown:
 
 ---
 
-###VISUALIZATION
+### VISUALIZATION
 ![@Convolution layer 1 visualization for 30 limit | center | img21](./img/layer1_visual.png)
 
 Visualizing across different experiments gave me an insight as to what features layer 1 of convolution is learning. I could not understand or visualize layer 2 and 3 of convolution network.
