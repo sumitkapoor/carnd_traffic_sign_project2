@@ -1,6 +1,5 @@
 #**Traffic Sign Recognition** 
 
-[TOC]
 
 ##Introduction
 For a self driving car to run on road the algorithms should be able to understand the traffic signs, rules just as a human being. Based on this, actions like stop, reduce speed, increase speed etc can then be defined for the car to operate.
@@ -103,6 +102,9 @@ In all the distribution above we can see that the data was very skewed and had l
 The training set was extended by adding images generated post rotation, shifting, flipping and zooming. Here I had explored *keras library* for generating training data, but just to understand the above image processing technique implemented it using PIL and numpy. I was interested in exploring ZCA whitening after reading it as one of the best practices, but it was taking a long time zca to be applied.
 
 Sample of generated images:
+
+---
+
 ![@No Entry Traffic sign | center | img04](./img/no_entry_generated.png)
 
 ![@Stop Traffic sign | center | img05](./img/stop_generated.png)
@@ -148,10 +150,7 @@ The model got evolved from LeNet architecture and had to be go through an iterat
 | Validation set  |    0.9313         |
 | Test set        |    0.928          |
 
-![@Accuracy across Validation ad Training | center | img08](./img/accuracy_across_epoch.png)
-
-*Note: Blue is validation and green is training* 
-![@Cost across Validation ad Training | center | img09](./img/cost_across_epoch.png)
+![@Validation and Training | center | img08](./img/accuracy_across_epoch.png)
 
 *Note: Blue is validation and green is training* 
 
@@ -184,22 +183,40 @@ Softmax probability of the images is as shown:
 | 1.0				    | Roundabout mandatory  |  
 
 
-STOP 
 ![@Softmax probability of stop sign | center | img13](./img/top_k_stop.png)
-SPEED LIMIT 30 KM/H 
+
+---
+
+
 ![@Softmax probability of speed limit 30 (km/h) | center | img14](./img/top_k_30.png)
-ROAD WORK
-![@Softmax probability of stop sign | center | img15](./img/top_k_road_work.png)
-CHILDREN CROSSING
-![@Softmax probability of stop sign | center | img16](./img/top_k_children.png)
-ROUNDABOUT MANDATORY 
-![@Softmax probability of stop sign | center | img17](./img/top_k_mandatory.png)
-NO ENTRY
-![@Softmax probability of stop sign | center | img18](./img/top_k_noentry.png)
-KEEP RIGHT
-![@Softmax probability of stop sign | center | img19](./img/top_k_right.png)
-YIELD
-![@Softmax probability of stop sign | center | img20](./img/top_k_yieldpng)
+
+---
+
+
+![@Softmax probability of road work | center | img15](./img/top_k_road_work.png)
+
+---
+
+![@Softmax probability of children crossing | center | img16](./img/top_k_children.png)
+
+---
+
+![@Softmax probability of  roundabout mandatory | center | img17](./img/top_k_mandatory.png)
+
+---
+
+![@Softmax probability of no entry | center | img18](./img/top_k_noentry.png)
+
+---
+
+![@Softmax probability of keep right | center | img19](./img/top_k_right.png)
+
+
+---
+
+![@Softmax probability of yield | center | img20](./img/top_k_yield.png)
+
+---
 
 ###VISUALIZATION
 ![@Convolution layer 1 visualization for 30 limit | center | img21](./img/layer1_visual.png)
