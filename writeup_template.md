@@ -1,185 +1,213 @@
 #**Traffic Sign Recognition** 
 
-##Writeup Template
+[TOC]
 
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+##Introduction
+For a self driving car to run on road the algorithms should be able to understand the traffic signs, rules just as a human being. Based on this, actions like stop, reduce speed, increase speed etc can then be defined for the car to operate.
 
----
+The document describes various steps and models that were used to identify and classify german traffic signs. For classification machine learning algorithms were used along with basic image processing. 
 
-**Build a Traffic Sign Recognition Project**
+The document first describes the goal of the project, the process that was taken to pre-process training set, models and debugging that was done to be able to increase the accuracy for the predictions. The model once trained was run over the test set and traffic sign images that were downloaded from the web.
 
-The goals / steps of this project are the following:
-* Load the data set (see below for links to the project data set)
-* Explore, summarize and visualize the data set
-* Design, train and test a model architecture
-* Use the model to make predictions on new images
-* Analyze the softmax probabilities of the new images
-* Summarize the results with a written report
+----
 
-
-[//]: # (Image References)
-
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
-
-## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
+##Project Goals
+The goals  of this project are the following:
+* Build and train a neural network to be able to classify the german traffic signs with at-least 0.93 accuracy.
+* Use the model to classify test set and random traffic sign images downloaded from the web.
+* Reflect on the choice of model, pre-processing techniques used for images, models, performance on the captured images.
 
 ---
-###Writeup / README
 
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
+##Reflection
 
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
-
-###Data Set Summary & Exploration
-
-####1. Provide a basic summary of the data set and identify where in your code the summary was done. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
-
-The code for this step is contained in the second code cell of the IPython notebook.  
-
-I used the pandas library to calculate summary statistics of the traffic
-signs data set:
-
-* The size of training set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
-
-####2. Include an exploratory visualization of the dataset and identify where the code is in your code file.
-
-The code for this step is contained in the third code cell of the IPython notebook.  
-
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
-
-![alt text][image1]
-
-###Design and Test a Model Architecture
-
-####1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.
-
-The code for this step is contained in the fourth code cell of the IPython notebook.
-
-As a first step, I decided to convert the images to grayscale because ...
-
-Here is an example of a traffic sign image before and after grayscaling.
-
-![alt text][image2]
-
-As a last step, I normalized the image data because ...
-
-####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
-
-The code for splitting the data into training and validation sets is contained in the fifth code cell of the IPython notebook.  
-
-To cross validate my model, I randomly split the training data into a training set and validation set. I did this by ...
-
-My final training set had X number of images. My validation set and test set had Y and Z number of images.
-
-The sixth code cell of the IPython notebook contains the code for augmenting the data set. I decided to generate additional data because ... To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
+Training data for the project was downloaded from [here](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/5898cd6f_traffic-signs-data/traffic-signs-data.zip).
+This is a zip file that contained the following:
+ 1. Training data in pickle form.
+ 2. Validation data in pickle form.
+ 3. Test data in pickle form.
+ 4. CSV of traffic sign name and corresponding identifiers.
 
 
-####3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+###UNDERSTANDING THE DATA
+The pickle object contained 4 key/ value pair:
+ *features* : raw pixels (num_examples, 32 (width), 32 (height), 3 (channels))
+ *labels* : sign identifiers corresponding to the features.
+ *sizes*  : list of tuple containing original width and height of the image
+ *coords* : containing tuples, (x1, y1, x2, y2) representing coordinates of a bounding box around the sign in the image.
 
-The code for my final model is located in the seventh cell of the ipython notebook. 
-
-My final model consisted of the following layers:
-
-| Layer         		|     Description	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
-| RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
+| Set             |    Number of data |
+| :--------       | -----------------:|
+| Training set    |    34799          |
+| Validation set  |     4410          |
+| Test set        |    12630          |
  
+ > **The images were of the shape 32 x 32 x 3 and there were 43 classes of german traffic signs.**
+| Class ID            |    SignName   |                                        
+| :-------------------- | :-----------|
+| 0 |  Speed limit (20km/h)  |
+| 1 |  Speed limit (30km/h)  |
+| 2 |  Speed limit (50km/h)  |
+| 3 | Speed limit (60km/h) |
+| 4 |  Speed limit (70km/h) | 
+| 5| Speed limit (80km/h) | 
+| 6| End of speed limit (80km/h)| 
+| 7| Speed limit (100km/h)| 
+| 8| Speed limit (120km/h)| 
+| 9| No passing| 
+| 10| No passing for vehicles over 3.5 metric tons| 
+| 11| Right-of-way at the next intersection| 
+| 12| Priority road| 
+| 13| Yield| 
+| 14| Stop| 
+| 15| No vehicles| 
+| 16| Vehicles over 3.5 metric tons prohibited| 
+| 17| No entry| 
+| 18| General caution| 
+| 19| Dangerous curve to the left| 
+| 20| Dangerous curve to the right| 
+| 21| Double curve| 
+| 22| Bumpy road| 
+| 23| Slippery road| 
+| 24| Road narrows on the right| 
+| 25| Road work| 
+| 26| Traffic signals| 
+| 27| Pedestrians| 
+| 28| Children crossing| 
+| 29| Bicycles crossing| 
+| 30| Beware of ice/snow| 
+| 31| Wild animals crossing| 
+| 32| End of all speed and passing limits| 
+| 33| Turn right ahead| 
+| 34| Turn left ahead| 
+| 35| Ahead only| 
+| 36| Go straight or right| 
+| 37| Go straight or left| 
+| 38| Keep right| 
+| 39| Keep left| 
+| 40| Roundabout mandatory| 
+| 41| End of no passing| 
+| 42| End of no passing by vehicles over 3.5 metric tons| 
+
+The following shows the distribution of features per data set:
+
+![@Training set | center | img01](./img/distri_training_pre_generation.png)
+
+![@Validation set | center | img02](./img/distri_validation.png)
+
+![@Test set | center | img03](./img/distri_test.png)
+
+In all the distribution above we can see that the data was very skewed and had less features for certain classes. This led to my model not being able to predict most of the traffic signs. I also encountered very less accuracy while working on the traffic sing images that were downloaded  from the web.
+
+###PRE-PROCESS DATA
+The training set was extended by adding images generated post rotation, shifting, flipping and zooming. Here I had explored *keras library* for generating training data, but just to understand the above image processing technique implemented it using PIL and numpy. I was interested in exploring ZCA whitening after reading it as one of the best practices, but it was taking a long time zca to be applied.
+
+Sample of generated images:
+![@No Entry Traffic sign | center | img04](./img/no_entry_generated.png)
+
+![@Stop Traffic sign | center | img05](./img/stop_generated.png)
+
+With the above method a total of **16125** images were randomly generated for all of the traffic signs and added to the training set. The distribution now looked 
+
+![@Training set post generating images | center | img06](./img/distri_training_post_generation.png)
+Post this I tried converting the image to YUV and later to grayscale but did not see any improvement in the accuracy and it was just adding to the processing time.
+
+The Training set, validation and test set was then normalized using the following:
+```
+(dataset - 128.0) / (128.0)
+```
+Post this I could see improvement with model accuracy.
 
 
-####4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+###NEURAL NETWORK MODEL
+The ConvNet architecture is composed of 3 repeated layers and then followed by 3 fully connected layers.  Each convolution layer contains a convolution module, followed by a rectified module. Max pooling module is used between convolution layer 1 and convolution layer 2.  
 
-The code for training the model is located in the eigth cell of the ipython notebook. 
+All convolution layer are of kernel 3 x 3. Layer 1 of convolution produces a depth of 32, the second layer produces the depth of 64 and finally the third layer produces the depth of 128. All max pooling layer are of stride 2 x 2.
 
-To train the model, I used an ....
+The output of convolution layer 3 is then flatten to passed to the first fully connected layer with node 2048. This is then connected to the next fully connected layer of node 512. The next fully connected layer also consists of 512 nodes which is then passed onto generate logits of 43 nodes.
 
-####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+Training of the network with dropouts applied at convolution layers and fully connected are 0.6 and 0.5 respectively.  Adam Optimizer is used for stochastic optimization with an exponential learning rate decay at each epoch. The starting learning rate is set to .003 which would decay by .99 after each epoch. 
 
-The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
+256 inputs was used as batch size and it took around 100 epochs to train the network with more than .93 accuracy.
 
-My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+![@Training Model | center | img07](./img/model.png)
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to over fitting or under fitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+The model got evolved from LeNet architecture and had to be go through an iteration were the following techniques were used:
+- DROPOUT : Initially the model didn't have any dropout and this resulted in more generalization. It was fitting well on the training set and poorly on the validation and test sets. Thus it was overfitting. Playing with a single dropout the model started to show better accuracy at validation set and was not doing well with the training set itself. Figured out that using two different dropout values for convolution layer and fully connected layer performed better.
+- CONVOLUTION DEPTH : Started with smaller depth of 8 at layer 1 and then moved onto 16. In both these cases the accuracy was low. Looking the the visualization for layer 1, figured out the feature map learnt was very low starting from the beginning itself. So increased it to 32 and correspondingly doubled at layer 2 and layer 3.
+- NUMBER OF NODES AT FULLY CONNECTED : With the number of nodes increasing at convolution layer the nodes also increased at fully connected layer. I would see better results when the node would increased.
+- NUMBER OF LAYERS : Increased the number of layer from starting LeNet architecture with 1 each for convolution and fully connected. I saw good performance once this was done.
+- LEARNING RATE : I started with static .001 learning rate and model would take around 100 - 150 epoch to learn. Also as the epoch increased so did the cost at validation set once pass a threshold. Figured out that it's a good idea to decay the learning rate. Eventually settled down to .003 with decay of .99 at each epoch.
+- EPOCHS : I would see that after certain epochs the cost would start increasing which would be due to overfitting of the model. Played with different values like 80, 100 and 150. Finally 100 worked.
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+###PERFORMANCE
+
+| Set             |    Accuracy |
+| :--------       | -----------------:|
+| Training set    |    0.9078         |
+| Validation set  |    0.9313         |
+| Test set        |    0.928          |
+
+![@Accuracy across Validation ad Training | center | img08](./img/accuracy_across_epoch.png)
+
+*Note: Blue is validation and green is training* 
+![@Cost across Validation ad Training | center | img09](./img/cost_across_epoch.png)
+
+*Note: Blue is validation and green is training* 
+
+Along the above 8 images were downloaded from the web to test the accuracy of the model. With progress in the performance of the model the accuracy also went up until 100 % accuracy was reached.
+
+----
+![@Image set 01 | center | img10](./img/image_01.png)
+![@Image set 02 | center | img11](./img/image_02.png)
+![@Image set 03 | center | img12](./img/image_03.png)
+
+----
+
  
+ 
+*Note : Images are stored in ./images/ . Name of the images is the class ID*
 
-###Test a Model on New Images
+###SOFTMAX PROPABILITIES
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
-
-Here are five German traffic signs that I found on the web:
-
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
-
-The first image might be difficult to classify because ...
-
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
-
-The code for making predictions on my final model is located in the tenth cell of the Ipython notebook.
-
-Here are the results of the prediction:
-
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
-
-
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
-
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
-
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+Softmax probability of the images is as shown:
 
 | Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+|:---------------------:|:-----------------------------------:| 
+| 1.0         			| Stop sign  |  
+| .62     				| Speed Limit 30 (km/h) 	|
+| 1.0 					| Yield		|
+| 1.0 	      			| Road Work	|
+| .36				    | Children Crossing  |
+| 1.0 				    | No entry  |  
+| 1.0 				    | Keep Right |   
+| 1.0				    | Roundabout mandatory  |  
 
 
-For the second image ... 
+STOP 
+![@Softmax probability of stop sign | center | img13](./img/top_k_stop.png)
+SPEED LIMIT 30 KM/H 
+![@Softmax probability of speed limit 30 (km/h) | center | img14](./img/top_k_30.png)
+ROAD WORK
+![@Softmax probability of stop sign | center | img15](./img/top_k_road_work.png)
+CHILDREN CROSSING
+![@Softmax probability of stop sign | center | img16](./img/top_k_children.png)
+ROUNDABOUT MANDATORY 
+![@Softmax probability of stop sign | center | img17](./img/top_k_mandatory.png)
+NO ENTRY
+![@Softmax probability of stop sign | center | img18](./img/top_k_noentry.png)
+KEEP RIGHT
+![@Softmax probability of stop sign | center | img19](./img/top_k_right.png)
+YIELD
+![@Softmax probability of stop sign | center | img20](./img/top_k_yieldpng)
+
+###VISUALIZATION
+![@Convolution layer 1 visualization for 30 limit | center | img21](./img/layer1_visual.png)
+
+Visualizing across different experiments gave me an insight as to what features layer 1 of convolution is learning. I could not understand or visualize layer 2 and 3 of convolution network.
+
+Based on the output for 8 and 16 depth layer1, It seemed that most of the features was missing and is included some dead feature maps. It did not seem that the layer was learning about colors so though of converting the images to gray. As this did not improve the accuracy I kept RGB.
+
+On increasing the layer 1 feature depth to 32, a lot more details were learnt as shown in the image above. Once I had made this change and correspondingly changes the subsequent layers by doubling the depth.
+
+Also reduced the kernel from 5 x 5 to 3 x 3 which improved the accuracy of the model.
