@@ -1,13 +1,5 @@
 # **Traffic Sign Recognition** 
 
-Git Structure:
-- images : Contains the set of images that were downloaded from the web.
-- img : helper images for the writeup
-- htmls : Different models that were part of experiments, contains multiple HTML.
-
-NOTE : One of the good results that were produced using LeNet architecture but with more nodes can be seen [here](https://github.com/sumitkapoor/carnd_traffic_sign_project2/blob/master/htmls/Traffic_Sign_Classifier_initial_good_model.html).
-
-
 ## Introduction
 For a self driving car to run on road the algorithms should be able to understand the traffic signs, rules just as a human being. Based on this, actions like stop, reduce speed, increase speed etc can then be defined for the car to operate.
 
@@ -115,7 +107,7 @@ Sample of generated images:
 
 With the above method a total of **16125** images were randomly generated for all of the traffic signs and added to the training set. The distribution now looked 
 
-![@Training set post generating images | center | img04](./img/training_set_post_image_generation.pngpng)
+![@Training set post generating images | center | img04](./img/training_set_post_image_generation.png)
 Post this I tried converting the image to YUV and later to grayscale but did not see any improvement in the accuracy and it was just adding to the processing time.
 
 The Training set, validation and test set was then normalized using the following:
@@ -145,6 +137,7 @@ The model got evolved from LeNet architecture and had to be go through an iterat
 - NUMBER OF LAYERS : Increased the number of layer from starting LeNet architecture with 1 each for convolution and fully connected. I saw good performance once this was done.
 - LEARNING RATE : I started with static .001 learning rate and model would take around 100 - 150 epoch to learn. Also as the epoch increased so did the cost at validation set once pass a threshold. Figured out that it's a good idea to decay the learning rate. Eventually settled down to .003 with decay of .99 at each epoch.
 - EPOCHS : I would see that after certain epochs the cost would start increasing which would be due to overfitting of the model. Played with different values like 80, 100 and 150. Finally 100 worked.
+
 
 ### PERFORMANCE
 
@@ -176,11 +169,11 @@ Softmax probability of the images is as shown:
 | 1.0         			| Stop sign  |   
 | 0.0					| Pedestrians|
 
-Along with the test dataset,  11 more images were downloaded from the web to test the accuracy of the model. With progress in the performance of the model the accuracy also went up until 81.18 %.
+Along with the test dataset, 11 more images were downloaded from the web to test the accuracy of the model. With progress in the performance of the model the accuracy also went up until 81.18%. While the prediction on test set was around 92.8 % accurate this did not hold true on the test images downloaded from the web.
 
-The model was able to predict all the signs except for '*bumpy roads*' and '*pedestrians*' with a 0% probability. Even for signs for '*children crossing*' the probability was around 34%. '*bumpy roads*' and '*children crossing*' signs seems to distorted post resize. Also '*bumpy road*'  has been captured from some distance, while all other images are captured from closer range. Even though '*bumpy road*' sign isn't close to '*general caution*' but the model has predicted so. The model seems to have been tuned to learn signs that have been captured from smaller distances and may not work well when signs are far or the capture resolution isn't good.
+The model was able to predict all the signs except for '*bumpy roads*' and '*pedestrians*' with a 0% probability. Even for sign '*children crossing*' the probability was around 34%. '*bumpy roads*' and '*children crossing*' signs seems to be getting  distorted post resize. Also '*bumpy road*'  has been captured from some distance, while all other images are captured from closer range. Even though '*bumpy road*' sign isn't close to '*general caution*' but the model has predicted so. The model seems to have been tuned to learn signs that have been captured from smaller distances and may not work well when signs are far or the capture resolution isn't good.
 
-The model predicted the '*Speed limit 70 (km/h)*'  with 87% and '*Speed Limit 30 (km/h)*' with 60% accuracy and was confused with other speed limit signs. The model seems to have learnt the features of speed limit signs but there is a scope of improvement for tuning the model to learn the classify the character within the signs.
+The model predicted the '*Speed limit 70 (km/h)*'  with 87% and '*Speed Limit 30 (km/h)*' with 60% accuracy and was confused with other speed limit signs. The model seems to have learnt the features of speed limit signs but there is a scope of improvement for tuning the model to learn and classify the character/ icons within the signs.
 
 The model was not able predict the '*pedestrian*' traffic sign as found in google image search as this was not the same sign on which the model was trained. The model confused it with other blue colored signs. Thus the model has not really learnt classifying the images based on the icons inside the post.
 
@@ -190,6 +183,7 @@ While the model was 100% certain about predicting most of the signs, the model w
 - Signs which have been partially obscured due to vehicles, pedestrians or nature.
 - New traffic sign images which are different from the training set.
 - Same signs but of different color or shade. Could be due to rusting or wearing out.
+- Signs which have been captured from long distances.
 
 ----
 ![@img01 Speed limit 30 (km/h)| center | img7](./img/30_limit_prediction.png)
