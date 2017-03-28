@@ -6,6 +6,7 @@ Git Structure:
 - htmls : Different models that were part of experiments, contains multiple HTML.
 
 NOTE : One of the good results that were produced using LeNet architecture but with more nodes can be seen [here](https://github.com/sumitkapoor/carnd_traffic_sign_project2/blob/master/htmls/Traffic_Sign_Classifier_initial_good_model.html).
+# **Traffic Sign Recognition** 
 
 ## Introduction
 For a self driving car to run on road the algorithms should be able to understand the traffic signs, rules just as a human being. Based on this, actions like stop, reduce speed, increase speed etc can then be defined for the car to operate.
@@ -97,11 +98,7 @@ The pickle object contained 4 key/ value pair:
 
 The following shows the distribution of features per data set:
 
-![@Training set | center | img01](./img/distri_training_pre_generation.png)
-
-![@Validation set | center | img02](./img/distri_validation.png)
-
-![@Test set | center | img03](./img/distri_test.png)
+![@Class Distribution across sets| center | img01](./img/distribution.png)
 
 In all the distribution above we can see that the data was very skewed and had less features for certain classes. This led to my model not being able to predict most of the traffic signs. I also encountered very less accuracy while working on the traffic sing images that were downloaded  from the web.
 
@@ -112,13 +109,13 @@ Sample of generated images:
 
 ---
 
-![@No Entry Traffic sign | center | img04](./img/no_entry_generated.png)
+![@No Entry Traffic sign | center | img02](./img/no_entry_generated.png)
 
-![@Stop Traffic sign | center | img05](./img/stop_generated.png)
+![@Stop Traffic sign | center | img03](./img/stop_generated.png)
 
 With the above method a total of **16125** images were randomly generated for all of the traffic signs and added to the training set. The distribution now looked 
 
-![@Training set post generating images | center | img06](./img/distri_training_post_generation.png)
+![@Training set post generating images | center | img04](./img/training_set_post_image_generation.pngpng)
 Post this I tried converting the image to YUV and later to grayscale but did not see any improvement in the accuracy and it was just adding to the processing time.
 
 The Training set, validation and test set was then normalized using the following:
@@ -131,7 +128,7 @@ Post this I could see improvement with model accuracy.
 ### NEURAL NETWORK MODEL
 The ConvNet architecture is composed of 3 repeated layers and then followed by 3 fully connected layers.  Each convolution layer contains a convolution module, followed by a rectified module. Max pooling module is used between convolution layer 1 and convolution layer 2.  
 
-All convolution layer are of kernel 3 x 3. Layer 1 of convolution produces a depth of 32, the second layer produces the depth of 64 and finally the third layer produces the depth of 128. All max pooling layer are of stride 2 x 2.
+First and third convolution layer are of kernel 3 x 3, while second layer is of 4 x 4 kernel. Layer 1 of convolution produces a depth of 32, the second layer produces the depth of 64 and finally the third layer produces the depth of 128. All max pooling layer are of stride 2 x 2.
 
 The output of convolution layer 3 is then flatten to passed to the first fully connected layer with node 2048. This is then connected to the next fully connected layer of node 512. The next fully connected layer also consists of 512 nodes which is then passed onto generate logits of 43 nodes.
 
@@ -139,7 +136,7 @@ Training of the network with dropouts applied at convolution layers and fully co
 
 256 inputs was used as batch size and it took around 100 epochs to train the network with more than .93 accuracy.
 
-![@Training Model | center | img07](./img/model.png)
+![@Training Model | center | img05](./img/model.png)
 
 The model got evolved from LeNet architecture and had to be go through an iteration were the following techniques were used:
 - DROPOUT : Initially the model didn't have any dropout and this resulted in more generalization. It was fitting well on the training set and poorly on the validation and test sets. Thus it was overfitting. Playing with a single dropout the model started to show better accuracy at validation set and was not doing well with the training set itself. Figured out that using two different dropout values for convolution layer and fully connected layer performed better.
@@ -157,22 +154,9 @@ The model got evolved from LeNet architecture and had to be go through an iterat
 | Validation set  |    0.9313         |
 | Test set        |    0.928          |
 
-![@Validation and Training | center | img08](./img/accuracy_across_epoch.png)
+![@Validation and Training | center | img06](./img/accuracy_across_epoch.png)
 
-*Note: Blue is validation and green is training* 
-
-Along the above 8 images were downloaded from the web to test the accuracy of the model. With progress in the performance of the model the accuracy also went up until 100 % accuracy was reached.
-
-----
-![@Image set 01 | center | img10](./img/image_01.png)
-![@Image set 02 | center | img11](./img/image_02.png)
-![@Image set 03 | center | img12](./img/image_03.png)
-
-----
-
- 
- 
-*Note : Images are stored in ./images/ . Name of the images is the class ID*
+>*Note: Blue is validation and green is training* 
 
 ### SOFTMAX PROPABILITIES
 
@@ -180,53 +164,74 @@ Softmax probability of the images is as shown:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:-----------------------------------:| 
-| 1.0         			| Stop sign  |  
-| .62     				| Speed Limit 30 (km/h) 	|
+| .6     				| Speed Limit 30 (km/h) 	|
+| .87     				| Speed Limit 70 (km/h) 	|
 | 1.0 					| Yield		|
-| 1.0 	      			| Road Work	|
-| .36				    | Children Crossing  |
-| 1.0 				    | No entry  |  
+| 0.0				    | Bumpy Road  | 
+| .34				    | Children Crossing  |  
 | 1.0 				    | Keep Right |   
-| 1.0				    | Roundabout mandatory  |  
+| 1.0 				    | No entry  |
+| 1.0				    | Roundabout mandatory |
+| 1.0 	      			| Road Work	|
+| 1.0         			| Stop sign  |   
+| 0.0					| Pedestrians|
 
+Along with the test dataset,  11 more images were downloaded from the web to test the accuracy of the model. With progress in the performance of the model the accuracy also went up until 81.18 %.
 
-![@Softmax probability of stop sign | center | img13](./img/top_k_stop.png)
+The model was able to predict all the signs except for '*bumpy roads*' with a 0% probability. Even for signs for children crossing the probability was around 34%. Both the signs seems to distorted post resize. Also '*bumpy road*'  has been captured from some distance, while all other images are captured from closer range. Even though '*bumpy road*' sign isn't close to '*general caution*' but the model has predicted so. The model seems to have been tuned to learn signs that have been captured from smaller distances and may not work well when signs are far or the capture resolution isn't good.
 
----
+The model predicted the '*Speed limit 70 (km/h)*'  with 87% accuracy and was confused with other speed limit signs. The model seems to have learnt the features of speed limit signs but there is a scope of improvement for tuning the model to learn the classify the character within the signs.
 
+The model was not able predict the '*pedestrian*' traffic sign as found in google image search as this was not the same sign on which the model was trained. The model confused it with other blue colored signs. Thus the model has not really learnt classifying the images based on the icons inside the post.
 
-![@Softmax probability of speed limit 30 (km/h) | center | img14](./img/top_k_30.png)
+While the model was 100% certain about predicting most of the signs, the model will not be able to generalize against signs which:
+- Have been distorted due to:
+	- lower visibility due to darkness, rain, dust or fog
+- Signs which have been partially obscured due to vehicles, pedestrians or nature.
+- New traffic sign images which are different from the training set.
+- Same signs but of different color shade. Could be due to rusting or wearing out.
 
----
+----
+![@img01 | left | img7](./img/30_limit_prediction.png)
+![@img01 softmax probability | right | img8](./img/30_limit_probability.png)
 
+![@img02 | left | img8](./img/70_limit_prediction.png)
+![@img02 softmax probability | right | img9](./img/70_limit_probability.png)
 
-![@Softmax probability of road work | center | img15](./img/top_k_road_work.png)
+![@img03 | left | img10](./img/yield_prediction.png)
+![@img03 softmax probability | right | img11](./img/yield_probability.png)
 
----
+![@img04 | left | img12](./img/bumpy_road_prediction.png)
+![@img04 softmax probability | right | img13](./img/bumpy_road_probability.png)
 
-![@Softmax probability of children crossing | center | img16](./img/top_k_children.png)
+![@img05 | left | img14](./img/children_crossing_prediction.png)
+![@img05 softmax probability | right | img15](./img/children_crossing_probability.png)
 
----
+![@img06 | left | img16](./img/keep_right_prediction.png)
+![@img06 softmax probability | right | img17](./img/keep_right_probability.png)
 
-![@Softmax probability of  roundabout mandatory | center | img17](./img/top_k_mandatory.png)
+![@img07 | left | img18](./img/noentry_prediction.png)
+![@img07 softmax probability | right | img19](./img/noentry_probability.png)
 
----
+![@img08 | left | img20](./img/road_work_prediction.png)
+![@img08 softmax probability | right | img21](./img/road_work_probability.png)
 
-![@Softmax probability of no entry | center | img18](./img/top_k_noentry.png)
+![@img09 | left | img22](./img/roundabout_prediction.png)
+![@img09  softmax probability | right | img23](./img/roundabout_probability.png)
 
----
+![@img10 | left | img24](./img/stop_prediction.png)
+![@img10  softmax probability | right | img25](./img/stop_probability.png)
 
-![@Softmax probability of keep right | center | img19](./img/top_k_right.png)
+![@img11 | left | img25](./img/pedestrian_prediction.png)
+![@img11  softmax probability | right | img26](./img/pedestrian_probability.png)
 
+----
+ 
+>*Note : Images are stored in ./images/ . Name of the images is the class ID*
 
----
-
-![@Softmax probability of yield | center | img20](./img/top_k_yield.png)
-
----
 
 ### VISUALIZATION
-![@Convolution layer 1 visualization for 30 limit | center | img21](./img/layer1_visual.png)
+![@Convolution layer 1 visualization for 30 limit | center | img27](./img/layer1_visual.png)
 
 Visualizing across different experiments gave me an insight as to what features layer 1 of convolution is learning. I could not understand or visualize layer 2 and 3 of convolution network.
 
