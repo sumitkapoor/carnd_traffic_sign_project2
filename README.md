@@ -192,46 +192,60 @@ While the model was 100% certain about predicting most of the signs, the model w
 - Same signs but of different color shade. Could be due to rusting or wearing out.
 
 ----
+<div>
 <img src="./img/30_limit_prediction.png" alt="@img01 | left | img7" width="50%" align="left">
 <img alt="@img01 softmax probability | right | img8" src="./img/30_limit_probability.png" align="right">
+</div>
 
+<div>
 <img src="./img/70_limit_prediction.png" alt="@img02 | left | img9" width="50%" align="left">
 <img alt="@img02 softmax probability | right | img10" src="./img/70_limit_probability.png" align="right">
+</div>
 
+<div>
 <img src="./img/yield_prediction.png" alt="@img03 | left | img11" width="50%" align="left">
 <img alt="@img03 softmax probability | right | img12" src="./img/yield_probability.png" align="right">
+</div>
 
+<div>
 <img src="./img/bumpy_road_prediction.png" alt="@img04 | left | img13" width="50%" align="left">
 <img alt="@img04 softmax probability | right | img14" src= "./img/bumpy_road_probability.png" align="right">
+</div>
 
-
+<div>
 <img src="./img/children_crossing_prediction.png" alt="@img05 | left | img15" width="50%" align="left">
 <img alt="@img05 softmax probability | right | img16" src="./img/children_crossing_probability.png" align="right">
+</div>
 
-
+<div>
 <img src="./img/keep_right_prediction.png" alt="@img06 | left | img17" width="50%" align="left">
 <img alt="@img06 softmax probability | right | img18" src="./img/keep_right_probability.png" align="right">
+</div>
 
-
+<div>
 <img src="./img/noentry_prediction.png" alt="@img07 | left | img19" width="50%" align="left">
 <img alt="@img07 softmax probability | right | img20" src="./img/noentry_probability.png" align="right">
+</div>
 
-
+<div>
 <img src="./img/road_work_prediction.png" alt="@img08 | left | img21" width="50%" align="left">
 <img alt="@img08 softmax probability | right | img22" src="./img/road_work_probability.png" align="right">
+</div>
 
-
+<div>
 <img src="./img/roundabout_prediction.png" alt="@img09 | left | img23" width="50%" align="left">
 <img alt="@img09  softmax probability | right | img24" src ="./img/roundabout_probability.png" align="right">
+</div>
 
-
+<div>
 <img src="./img/stop_prediction.png" alt="@img10 | left | img25" width="50%" align="left">
 <img alt="@img10  softmax probability | right | img26" src="./img/stop_probability.png" align="right">
+</div>
 
-
+<div>
 <img src="./img/pedestrian_prediction.png" alt="@img11 | left | img27" width="50%" align="left">
 <img alt="@img11  softmax probability | right | img28" src="./img/pedestrian_probability.png" align="right">
-
+</div>
 ----
  
 >*Note : Images are stored in ./images/ . Name of the images is the class ID*
