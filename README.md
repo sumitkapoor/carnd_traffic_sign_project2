@@ -1,13 +1,5 @@
 # **Traffic Sign Recognition** 
 
-Git Structure:
-- images : Contains the set of images that were downloaded from the web.
-- img : helper images for the writeup
-- htmls : Different models that were part of experiments, contains multiple HTML.
-
-NOTE : One of the good results that were produced using LeNet architecture but with more nodes can be seen [here](https://github.com/sumitkapoor/carnd_traffic_sign_project2/blob/master/htmls/Traffic_Sign_Classifier_initial_good_model.html).
-# **Traffic Sign Recognition** 
-
 ## Introduction
 For a self driving car to run on road the algorithms should be able to understand the traffic signs, rules just as a human being. Based on this, actions like stop, reduce speed, increase speed etc can then be defined for the car to operate.
 
@@ -115,7 +107,7 @@ Sample of generated images:
 
 With the above method a total of **16125** images were randomly generated for all of the traffic signs and added to the training set. The distribution now looked 
 
-![@Training set post generating images | center | img04](./img/training_set_post_image_generation.pngpng)
+![@Training set post generating images | center | img04](./img/training_set_post_image_generation.png)
 Post this I tried converting the image to YUV and later to grayscale but did not see any improvement in the accuracy and it was just adding to the processing time.
 
 The Training set, validation and test set was then normalized using the following:

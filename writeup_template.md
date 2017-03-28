@@ -107,7 +107,7 @@ Sample of generated images:
 
 With the above method a total of **16125** images were randomly generated for all of the traffic signs and added to the training set. The distribution now looked 
 
-![@Training set post generating images | center | img04](./img/training_set_post_image_generation.pngpng)
+![@Training set post generating images | center | img04](./img/training_set_post_image_generation.png)
 Post this I tried converting the image to YUV and later to grayscale but did not see any improvement in the accuracy and it was just adding to the processing time.
 
 The Training set, validation and test set was then normalized using the following:
