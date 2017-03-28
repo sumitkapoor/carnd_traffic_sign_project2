@@ -192,6 +192,8 @@ While the model was 100% certain about predicting most of the signs, the model w
 - Same signs but of different color shade. Could be due to rusting or wearing out.
 
 ----
+
+<div>
 <p>
 <img src="./img/30_limit_prediction.png" alt="@img01 | left | img7" width="50%" align="left">
 <img alt="@img01 softmax probability | right | img8" src="./img/30_limit_probability.png" align="right">
@@ -246,6 +248,8 @@ While the model was 100% certain about predicting most of the signs, the model w
 <img src="./img/pedestrian_prediction.png" alt="@img11 | left | img27" width="50%" align="left">
 <img alt="@img11  softmax probability | right | img28" src="./img/pedestrian_probability.png" align="right">
 </p>
+
+</div>
 
 ----
  
