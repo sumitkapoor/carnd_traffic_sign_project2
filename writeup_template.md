@@ -172,7 +172,7 @@ Along with the test dataset,  11 more images were downloaded from the web to tes
 
 The model was able to predict all the signs except for '*bumpy roads*' with a 0% probability. Even for signs for children crossing the probability was around 34%. Both the signs seems to distorted post resize. Also '*bumpy road*'  has been captured from some distance, while all other images are captured from closer range. Even though '*bumpy road*' sign isn't close to '*general caution*' but the model has predicted so. The model seems to have been tuned to learn signs that have been captured from smaller distances and may not work well when signs are far or the capture resolution isn't good.
 
-The model predicted the '*Speed limit 70 (km/h)*'  with 87% accuracy and was confused with other speed limit signs. The model seems to have learnt the features of speed limit signs but there is a scope of improvement for tuning the model to learn the classify the character within the signs.
+The model predicted the '*Speed limit 70 (km/h)*'  with 87% and '*Speed limit 30 (km/h)*' with 60% accuracy and was confused with other speed limit signs. The model seems to have learnt the features of speed limit signs but there is a scope of improvement for tuning the model to learn the classify the character within the signs.
 
 The model was not able predict the '*pedestrian*' traffic sign as found in google image search as this was not the same sign on which the model was trained. The model confused it with other blue colored signs. Thus the model has not really learnt classifying the images based on the icons inside the post.
 
@@ -184,38 +184,45 @@ While the model was 100% certain about predicting most of the signs, the model w
 - Same signs but of different color shade. Could be due to rusting or wearing out.
 
 ----
-![@img01 | left | img7](./img/30_limit_prediction.png)
+<img src="./img/30_limit_prediction.png" alt="@img01 | left | img7" style="max-width:50%;">
 ![@img01 softmax probability | right | img8](./img/30_limit_probability.png)
 
-![@img02 | left | img8](./img/70_limit_prediction.png)
-![@img02 softmax probability | right | img9](./img/70_limit_probability.png)
+<img src="./img/70_limit_prediction.png" alt="@img02 | left | img9" style="max-width:50%;">
+![@img02 softmax probability | right | img10](./img/70_limit_probability.png)
 
-![@img03 | left | img10](./img/yield_prediction.png)
-![@img03 softmax probability | right | img11](./img/yield_probability.png)
+<img src="./img/yield_prediction.png" alt="@img03 | left | img11" style="max-width:50%;">
+![@img03 softmax probability | right | img12](./img/yield_probability.png)
 
-![@img04 | left | img12](./img/bumpy_road_prediction.png)
-![@img04 softmax probability | right | img13](./img/bumpy_road_probability.png)
+<img src="./img/bumpy_road_prediction.png" alt="@img04 | left | img13" style="max-width:50%;">
+![@img04 softmax probability | right | img14](./img/bumpy_road_probability.png)
 
-![@img05 | left | img14](./img/children_crossing_prediction.png)
-![@img05 softmax probability | right | img15](./img/children_crossing_probability.png)
 
-![@img06 | left | img16](./img/keep_right_prediction.png)
-![@img06 softmax probability | right | img17](./img/keep_right_probability.png)
+<img src="./img/children_crossing_prediction.png" alt="@img05 | left | img15" style="max-width:50%;">
+![@img05 softmax probability | right | img16](./img/children_crossing_probability.png)
 
-![@img07 | left | img18](./img/noentry_prediction.png)
-![@img07 softmax probability | right | img19](./img/noentry_probability.png)
 
-![@img08 | left | img20](./img/road_work_prediction.png)
-![@img08 softmax probability | right | img21](./img/road_work_probability.png)
+<img src="./img/keep_right_prediction.png" alt="@img06 | left | img17" style="max-width:50%;">
+![@img06 softmax probability | right | img18](./img/keep_right_probability.png)
 
-![@img09 | left | img22](./img/roundabout_prediction.png)
-![@img09  softmax probability | right | img23](./img/roundabout_probability.png)
 
-![@img10 | left | img24](./img/stop_prediction.png)
-![@img10  softmax probability | right | img25](./img/stop_probability.png)
+<img src="./img/noentry_prediction.png" alt="@img07 | left | img19" style="max-width:50%;">
+![@img07 softmax probability | right | img20](./img/noentry_probability.png)
 
-![@img11 | left | img25](./img/pedestrian_prediction.png)
-![@img11  softmax probability | right | img26](./img/pedestrian_probability.png)
+
+<img src="./img/road_work_prediction.png" alt="@img08 | left | img21" style="max-width:50%;">
+![@img08 softmax probability | right | img22](./img/road_work_probability.png)
+
+
+<img src="./img/roundabout_prediction.png" alt="@img09 | left | img23" style="max-width:50%;">
+![@img09  softmax probability | right | img24](./img/roundabout_probability.png)
+
+
+<img src="./img/stop_prediction.png" alt="@img10 | left | img25" style="max-width:50%;">
+![@img10  softmax probability | right | img26](./img/stop_probability.png)
+
+
+<img src="./img/pedestrian_prediction.png" alt="@img11 | left | img27" style="max-width:50%;">
+![@img11  softmax probability | right | img28](./img/pedestrian_probability.png)
 
 ----
  
@@ -223,7 +230,7 @@ While the model was 100% certain about predicting most of the signs, the model w
 
 
 ### VISUALIZATION
-![@Convolution layer 1 visualization for 30 limit | center | img27](./img/layer1_visual.png)
+![@Convolution layer 1 visualization for 30 limit | center | img29](./img/layer1_visual.png)
 
 Visualizing across different experiments gave me an insight as to what features layer 1 of convolution is learning. I could not understand or visualize layer 2 and 3 of convolution network.
 
