@@ -193,7 +193,6 @@ While the model was 100% certain about predicting most of the signs, the model w
 
 ----
 
-<div class="readme boxed-group clearfix instapaper_body md">
 <p>
 <img src="./img/30_limit_prediction.png" alt="@img01 | left | img7" width="40%" align="left">
 <img alt="@img01 softmax probability | right | img8" src="./img/30_limit_probability.png" align="right">
@@ -245,15 +244,15 @@ While the model was 100% certain about predicting most of the signs, the model w
 </p>
 
 <p>
-<img src="./img/pedestrian_prediction.png" alt="@img11 | left | img27" width="50%" align="left">
+<img src="./img/pedestrian_prediction.png" alt="@img11 | left | img27" width="40%" align="left">
 <img alt="@img11  softmax probability | right | img28" src="./img/pedestrian_probability.png" align="right">
 </p>
 
-</div>
+<p>
+*Note : Images are stored in ./images/ . Name of the images is the class ID*
+</p>
 
-----
- 
->*Note : Images are stored in ./images/ . Name of the images is the class ID*
+---
 
 
 ### VISUALIZATION
